@@ -44,6 +44,12 @@ public class TestSelenium {
         } else {
             System.out.println("Not all three items are selected");
         }
+         List<WebElement> products = driver.findElements(By.className("js-schema-results schema-grid__center-column"));
+        if (products.size() > 0 && products.get(0).isDisplayed()) {
+            System.out.println("At least one product is displayed");
+        } else {
+            System.out.println("No products are displayed");
+        }
 
         driver.quit();
     }
