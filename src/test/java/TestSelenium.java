@@ -12,7 +12,7 @@ public class TestSelenium {
     private static ChromeOptions chromeOptions = new ChromeOptions();
 
     @Test
-    public void test1() {
+    public void testChooseHairDryer() {
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         WebDriver driver = new ChromeDriver(chromeOptions);
         driver.get("https://onliner.by");
@@ -25,24 +25,28 @@ public class TestSelenium {
         }
         driver.quit();
     }
-
-    @Test
-    public void test2() {
+ @Test
+    public void testChooseHairDryers() {
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         WebDriver driver = new ChromeDriver(chromeOptions);
         driver.get("https://onliner.by");
         driver.findElement(By.xpath("//span[text()='Фены']")).click();
-        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 250)");
-        List<WebElement> elements = driver.findElements(By.xpath("//input[(@value='Rowenta', @value='Dyson', @value='Philips')]/following-sibling::span"));
-        for (WebElement element : elements) {
-            element.click();
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 300)");
+        driver.findElement(By.xpath("//input[@value='rowenta']/following-sibling::span")).click();
+        driver.findElement(By.xpath("//input[@value='philips']/following-sibling::span")).click();
+        driver.findElement(By.xpath("//input[@value='babylisspro']/following-sibling::span")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div/div/div/div/div[2]/div[1]/div[4]/div[3]/div[4]")));
+        if (driver.findElement(By.xpath("//input[@value='rowenta']")).isSelected() &&
+                driver.findElement(By.xpath("//input[@value='philips']")) .isSelected() &&
+                driver.findElement(By.xpath("//input[@value='babylisspro']")) .isSelected()) {
+            System.out.println("All items are selected");
+        } else {
+            System.out.println("Not all three items are selected");
         }
-        for (WebElement element : elements) {
-            if (!element.isSelected()) {
-                System.out.println("Element not selected: " + element.getText());
-            }
-        }
+
         driver.quit();
     }
+    
 }
 
