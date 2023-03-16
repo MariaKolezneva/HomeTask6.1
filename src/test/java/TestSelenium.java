@@ -33,7 +33,7 @@ public class TestSelenium {
         driver.get("https://onliner.by");
         driver.findElement(By.xpath("//span[text()='Фены']")).click();
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 250)");
-        List<WebElement> elements = driver.findElements(By.xpath("//input[(@value='Rowenta' or @value='Dyson'or @value='Philips')]/following-sibling::span"));
+        List<WebElement> elements = driver.findElements(By.xpath("//input[(@value='Rowenta', @value='Dyson', @value='Philips')]/following-sibling::span"));
         for (WebElement element : elements) {
             element.click();
         }
