@@ -35,19 +35,18 @@ public class HairDryerPage extends PageBase {
     }
 
     public boolean ifSelectedOneHairDryer() {
-        driver.findElement(babylissCheckbox).isSelected();
-        return true;
+        return driver.findElement(babylissCheckbox).isSelected();
     }
 
     public boolean isProductsDisplayed() {
         List<WebElement> products = driver.findElements(productsContainer);
         if (products.size() > 0 && products.get(0).isDisplayed()) {
             System.out.println("At least one product is displayed");
+            return true;
         } else {
         System.out.println("No products are displayed");
+        return false;
     }
-        return true;
-
     }
     public HairDryerPage chooseHairDryers(){
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 400)");
@@ -61,8 +60,11 @@ public class HairDryerPage extends PageBase {
                 driver.findElement(By.xpath("//input[@value='philips']")) .isSelected() &&
                 driver.findElement(By.xpath("//input[@value='babylisspro']")) .isSelected()) {
             System.out.println("All items are selected");
+            return true;
+        }else {
+            System.out.println("No products selected");
+            return false;
         }
-        return true;
     }
 }
 
