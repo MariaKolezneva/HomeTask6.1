@@ -7,7 +7,4 @@ public class PageBase {
     public PageBase (WebDriver driver){
         this.driver= driver;
     }
-    public void open (String url){
-        driver.get(url);
-    }
 }
