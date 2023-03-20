@@ -10,8 +10,7 @@ public class CommonActions {
     private static ChromeOptions chromeOptions = new ChromeOptions();
     public static WebDriver createDriver(){
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-        WebDriver driver = new ChromeDriver(chromeOptions);
 
-        return driver;
+        return new ChromeDriver(chromeOptions);
     }
 }

@@ -1,12 +1,15 @@
+package testdesktop;
+
 import org.junit.Assert;
 import org.junit.Test;
 import testbase.BaseTest;
 
-public class HairDryerPage extends BaseTest {
+public class HairDryerPageTest extends BaseTest {
 
     @Test
     public void testChooseOneHairDryer() {
         hairDryerPage.open();
+        hairDryerPage.scrollPage();
         hairDryerPage.chooseOneHairDryer();
         Assert.assertTrue(hairDryerPage.ifSelectedOneHairDryer());
         Assert.assertTrue(hairDryerPage.isProductsDisplayed());
@@ -16,8 +19,9 @@ public class HairDryerPage extends BaseTest {
     @Test
     public void testChooseHairDryers(){
         hairDryerPage.open();
+        hairDryerPage.scrollPage();
         hairDryerPage.chooseHairDryers();
-        Assert.assertTrue(hairDryerPage.ifSelectedThreeHairDryer());
+        Assert.assertTrue(hairDryerPage.ifSelectedThreeHairDryers());
         Assert.assertTrue(hairDryerPage.isProductsDisplayed());
 
 
